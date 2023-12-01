@@ -16,9 +16,6 @@ class _PlayerPageState extends State<PlayerPage> {
   @override
   void initState() {
     _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
-        // channelSectionProvider
-        //         .channelSectionModel.result?[0].data?[0].video320 ??
-        //     ""
         "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"));
 
     _setupController(startAt: Duration.zero);
@@ -40,27 +37,6 @@ class _PlayerPageState extends State<PlayerPage> {
       allowedScreenSleep: false,
       zoomAndPan: true,
       isLive: true,
-      // transformationController: TransformationController(),
-      // deviceOrientationsOnEnterFullScreen: [
-      //   DeviceOrientation.landscapeLeft,
-      //   DeviceOrientation.landscapeRight,
-      // ],
-      // deviceOrientationsAfterFullScreen: [
-      //   DeviceOrientation.portraitUp,
-      //   DeviceOrientation.portraitDown,
-      // ],
-      // cupertinoProgressColors: ChewieProgressColors(
-      //   playedColor: colorPrimary,
-      //   handleColor: complimentryColor,
-      //   backgroundColor: grayDark,
-      //   bufferedColor: whiteTransparent,
-      // ),
-      // materialProgressColors: ChewieProgressColors(
-      //   playedColor: colorPrimary,
-      //   handleColor: complimentryColor,
-      //   backgroundColor: grayDark,
-      //   bufferedColor: whiteTransparent,
-      // ),
       errorBuilder: (context, errorMessage) {
         return const Icon(Icons.error);
       },
@@ -69,7 +45,6 @@ class _PlayerPageState extends State<PlayerPage> {
 
   @override
   void dispose() {
-    // channelSectionProvider.clearProvider();
     _chewieController?.videoPlayerController.dispose();
     super.dispose();
   }
@@ -77,9 +52,8 @@ class _PlayerPageState extends State<PlayerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
           height: MediaQuery.of(context).size.height * 0.25,
-          // decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
           child: Chewie(
             controller: _chewieController!,
           )),
